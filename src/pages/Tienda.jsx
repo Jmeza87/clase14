@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import  Card  from "../components/Card";
 
 const API='https://dummyjson.com/products'
 
@@ -14,7 +15,7 @@ const [datos, setDatos] = useState([])
           console.log(data)
 
           setDatos(data.products);
-          setContador(100);
+      
         } catch (error) {
           console.error(error)
         }
@@ -33,28 +34,9 @@ const [datos, setDatos] = useState([])
     <div className="row">
 
         {datos && datos.map((item)=>(
-        <>
-                <div className="col-md-4 col-lg-3 mb-4">
-                
-                <div className="card">
-                    <div className="card-header p-0">
-                    <img src={item.thumbnail} alt="" className="img-fluid" />
-                    </div>
-                        <div className="card-body text-center">
-                
-                             <p>{item.title}</p>
-                             <p className="color-text">{item.price}$</p>
-                         </div>
-                         <div className="card-footer text-center">
-
-                            <a href="#" className="btn btn-success me-1" >Mostrar</a>
-                            <a href="#" className="btn btn-danger" >Comprar </a>
-
-                         </div>
+       
+               <Card key={item.id} item={item} />
                
-                </div>
-                </div>
-                </>
 
             ))} 
                
